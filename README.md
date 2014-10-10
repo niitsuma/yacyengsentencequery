@@ -3,7 +3,7 @@
 install 
 
 - nltk
-- YaCy
+- YaCy http://www.suri.cs.okayama-u.ac.jp/~niitsuma/yacy1.72engAcademic-current.tar.gz
 - python pdfminer
 - python urllib2
 - python epc (pip install epc  ) https://github.com/tkf/python-epc
