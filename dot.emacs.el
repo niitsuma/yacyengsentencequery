@@ -1,16 +1,4 @@
-# Install
-
-install 
-
-- nltk
-- YaCy
-- python pdfminer
-- python urllib2
-- python epc (pip install epc  ) https://github.com/tkf/python-epc
-
-## .emacs
-
-    (require 'epc)
+   (require 'epc)
     (defvar yacyengsentencequery-epc (epc:start-epc "python" '("/pathto/yacyengsentencequery.py")))
     
     (defun sentence-search-yacy (keywordsstr)
