@@ -1,6 +1,7 @@
 
 import os
 import sys
+import codecs
 import nltk
 from YaCyQuery import YaCyQuery
 from config import *
@@ -69,15 +70,20 @@ class YaCyEngSentenceQuery:
         self.query=YaCyQuery(self.querystr)
         self.fetch_timeout=12
         self.unique_result=[]
-        self.sent_detector=nltk.data.load('tokenizers/punkt/english.pickle')
+        self.sent_detector=nltk.data.load('tokenizers/punkt/english.pickle') ###nltk2
+        #self.sent_detector=nltk.load('tokenizers/punkt/english.pickle')  ###nltk3
         self.n_need_sentences=0
         self.url_stack=[]
         
         
     def rowtext2local_result(self,raw,url) :
-        sentences=self.sent_detector.tokenize(raw)
+        #print 'rowtext2local_result'
+        #print raw
+        sentences=self.sent_detector.tokenize(raw.decode('utf-8'))
+        #print sentences
         local_ret = [[url,t] for t in sentences if all(w.lower() in t.lower() for w in self.word_list) ]
-        return local_ret
+        #print local_ret
+        return [[r[0],r[1].encode('utf-8')] for r in local_ret]
     
     def result2unique_result(self,local_ret) :
         [self.unique_result.append(item) for item in local_ret if item not in self.unique_result]
@@ -168,10 +174,12 @@ def yacy_eng_sentence_search_html_write(keys) :
     print fname
     qe=YaCyEngSentenceQuery(keys)
     #qe.query.setParam('fq',"host_s:*.nips.cc")
-    qe.query.setParam('fq',"host_s:jmlr.org host_s:papers.nips.cc host_s:www.schemeworkshop.org")
+    #qe.query.setParam('fq',"host_s:jmlr.org host_s:papers.nips.cc host_s:www.schemeworkshop.org")
+    qe.query.setParam('fq',"host_s:jmlr.org host_s:papers.nips.cc host_s:www.schemeworkshop.org host_s:dl.acm.org host_s:www.computer.org")
     qe.query.setParam('rows',"1000")
 
     ret=qe.request()
+    #print ret
     html_write(fname,ret,keys)
     return fname
 
