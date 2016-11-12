@@ -8,6 +8,8 @@
 # this stuff is worth it, you can buy me a pizza in return. - Thomas Kolb
 # ----------------------------------------------------------------------------
 
+import os.path
+
 IRC_SERVER  = "localhost" # Hostname / IP of the IRC server
 IRC_PORT    = 61234       # Port of the IRC server
 IRC_NICK    = "YaCyBot"   # Nick of the bot
@@ -25,7 +27,8 @@ IRC_MIN_DELAY = 0.8
 # IRC_PING_INTERVAL seconds
 IRC_PING_INTERVAL = 300
 
-YACY_ADDRESS     = "localhost" # Hostname / IP of the YaCy-Peer
+#YACY_ADDRESS     = "localhost" # Hostname / IP of the YaCy-Peer
+YACY_ADDRESS     = "150.46.1.5" # Hostname / IP of the YaCy-Peer
 YACY_PORT        = 8091        # Port of the YaCy-Peer
 
 # Default parameters for the request URL
@@ -51,4 +54,6 @@ YACY_STATS_UPDATE_INTERVAL = 60
 # when the YaCy peer is hanging
 URLLIB_TIMEOUT = 60
 
-OUTPUT_DIR = "/home/niitsumalocal/tmp/"
+OUTPUT_DIR = os.path.expanduser('~/tmp/')
+
+

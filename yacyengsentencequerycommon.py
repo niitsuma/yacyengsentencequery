@@ -173,9 +173,9 @@ def yacy_eng_sentence_search_html_write(keys) :
     print keys
     print fname
     qe=YaCyEngSentenceQuery(keys)
-    #qe.query.setParam('fq',"host_s:*.nips.cc")
+    qe.query.setParam('fq',"host_s:*.nips.cc")
     #qe.query.setParam('fq',"host_s:jmlr.org host_s:papers.nips.cc host_s:www.schemeworkshop.org")
-    qe.query.setParam('fq',"host_s:jmlr.org host_s:papers.nips.cc host_s:www.schemeworkshop.org host_s:dl.acm.org host_s:www.computer.org")
+    #qe.query.setParam('fq',"host_s:jmlr.org host_s:papers.nips.cc host_s:www.schemeworkshop.org host_s:dl.acm.org host_s:www.computer.org")
     qe.query.setParam('rows',"1000")
 
     ret=qe.request()
